@@ -28,8 +28,19 @@ export const createAppointment = async (
     revalidatePath("/admin");
     return parseStringify(newAppointment);
   } catch (error) {
-    console.error("An error occurred while creating a new appointment:", error);
+    console.error(
+      "An error occurred while retrieving the recent appointments:",
+      error
+    );
+    return {
+      totalCount: 0,
+      scheduledCount: 0,
+      pendingCount: 0,
+      cancelledCount: 0,
+      documents: [],
+    };
   }
+
 };
 
 //  GET RECENT APPOINTMENTS
@@ -97,6 +108,14 @@ export const getRecentAppointmentList = async () => {
       "An error occurred while retrieving the recent appointments:",
       error
     );
+    // إرجاع قيم افتراضية تمنع انهيار كود الـ Admin
+    return {
+      totalCount: 0,
+      scheduledCount: 0,
+      pendingCount: 0,
+      cancelledCount: 0,
+      documents: [],
+    };
   }
 };
 

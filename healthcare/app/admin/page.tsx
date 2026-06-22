@@ -8,6 +8,10 @@ import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
 
 const AdminPage = async () => {
   const appointments = await getRecentAppointmentList();
+  console.log("appointments:", appointments);
+  console.log("DATABASE_ID:", process.env.DATABASE_ID);
+  console.log("APPOINTMENT_COLLECTION_ID:", process.env.APPOINTMENT_COLLECTION_ID);
+
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col space-y-14">
